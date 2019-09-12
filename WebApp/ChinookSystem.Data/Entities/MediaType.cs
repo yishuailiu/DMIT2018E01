@@ -30,9 +30,9 @@ namespace ChinookSystem.Data.Entities
                 else
                 {
                     _Name = value;
-                }//eof
+                }
             }
-        }//eop
+        }
 
         public virtual Track Tracks { get; set; }
 
