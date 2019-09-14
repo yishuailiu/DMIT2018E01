@@ -14,7 +14,7 @@
         &nbsp;&nbsp;
         <asp:LinkButton ID="FetchAlbums" runat="server" CausesValidation="false" >Fetch Albums</asp:LinkButton>
         <br />
-        <asp:GridView ID="AlbumList" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="5" CssClass="table table-striped" GridLines="Horizontal" BorderStyle="None" DataSourceID="AlbumListODS">
+        <asp:GridView ID="AlbumList" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="5" CssClass="table table-striped" GridLines="Horizontal" BorderStyle="None" DataSourceID="AlbumListODS" OnSelectedIndexChanged="AlbumList_SelectedIndexChanged">
             <Columns>
                 <asp:CommandField SelectText="View" ShowSelectButton="True" CausesValidation="false"></asp:CommandField>
                 <asp:TemplateField HeaderText="Album">
@@ -53,7 +53,7 @@
         <br />
          <asp:Label ID="label4" runat="server" Text="Artist" MaxLength="160"></asp:Label>
         &nbsp;&nbsp;
-       <asp:DropDownList ID="EditAlbumArtistList" runat="server" ></asp:DropDownList>
+       <asp:DropDownList ID="EditAlbumArtistList" runat="server" DataSourceID="EditArtistListODS" DataTextField="Name" DataValueField="ArtistId"></asp:DropDownList>
         <br />
          <asp:Label ID="label5" runat="server" Text="Year:"></asp:Label>
         &nbsp;&nbsp;
@@ -73,4 +73,5 @@
             <asp:ControlParameter ControlID="ArtistList" PropertyName="SelectedValue" DefaultValue="0" Name="artistid" Type="Int32"></asp:ControlParameter>
         </SelectParameters>
     </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="EditArtistListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Artist_List" TypeName="ChinookSystem.BLL.ArtistController"></asp:ObjectDataSource>
 </asp:Content>
