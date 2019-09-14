@@ -15,7 +15,7 @@ namespace ChinookSystem.Data.Entities
         public int AlbumId { get; set; }
         public string Title { get; set; }
         public int ArtistId { get; set; }
-        public string ReleaseYear { get; set; }
+        public int ReleaseYear { get; set; }
         private string _ReleaseLabel;
         public string ReleaseLabel {
             get
@@ -36,5 +36,11 @@ namespace ChinookSystem.Data.Entities
         }
 
         public virtual Artist Artists { get; set; }
+
+        public virtual ICollection<Track> Tracks
+        {
+            get;
+            set;
+        }
     }
 }

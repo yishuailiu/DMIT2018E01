@@ -34,7 +34,11 @@ namespace ChinookSystem.Data.Entities
             }
         }
 
-        public virtual Track Tracks { get; set; }
+        public virtual ICollection<Track> Tracks
+        {
+            get;
+            set;
+        }
 
     }
 }

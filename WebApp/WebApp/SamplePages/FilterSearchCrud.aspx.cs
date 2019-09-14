@@ -28,10 +28,12 @@ namespace WebApp.SamplePages
             info.Sort((x, y) => x.Name.CompareTo(y.Name));
             ArtistList.DataSource = info;
             ArtistList.DataTextField = nameof(Artist.Name);
-            ArtistList.DataTextField = nameof(Artist.ArtistId);
+            ArtistList.DataValueField = nameof(Artist.ArtistId);
 
             ArtistList.DataBind();
-            ArtistList.Items.Insert(0, "select ...");
+            //ArtistList.Items.Insert(0, "select ...");
         }
+
+        
     }
 }

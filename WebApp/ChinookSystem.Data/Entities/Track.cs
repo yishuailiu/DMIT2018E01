@@ -40,8 +40,8 @@ namespace ChinookSystem.Data.Entities
         public int? Bytes { get; set; }
         public double UnitPrice { get; set; }
 
-        public virtual ICollection<Album> Albums { get; set; }
-        public virtual ICollection<MediaType> MediaTypes { get; set; }
-        public virtual ICollection<Genre> Genres { get; set; }
+        public virtual MediaType MediaTypes { get; set; }
+        public virtual Genre Genres { get; set; }
+        public virtual Album Albums { get; set; }
     }
 }
