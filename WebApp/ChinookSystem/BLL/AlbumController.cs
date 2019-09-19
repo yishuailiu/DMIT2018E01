@@ -15,6 +15,7 @@ namespace ChinookSystem.BLL
     public class AlbumController
     {
         #region query
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Album> Album_List()
         {
             using (var context = new ChinookContext())
@@ -22,7 +23,7 @@ namespace ChinookSystem.BLL
                 return context.Albums.ToList();
             }
         }
-
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Album Album_Get(int Albumid)
         {
             using (var context = new ChinookContext())
@@ -30,7 +31,7 @@ namespace ChinookSystem.BLL
                 return context.Albums.Find(Albumid);
             }
         }
-        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Album> Album_FindByArtist(int artistid)
         {
             using (var context = new ChinookContext())
@@ -44,6 +45,7 @@ namespace ChinookSystem.BLL
         #endregion
 
         #region Add,Update,Delete
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int Album_Add(Album item)
         {
             using(var context = new ChinookContext())
@@ -53,6 +55,7 @@ namespace ChinookSystem.BLL
                 return item.AlbumId;
             }
         }
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
         public int Album_Update(Album item)
         {
             using(var context = new ChinookContext())
@@ -60,6 +63,11 @@ namespace ChinookSystem.BLL
                 context.Entry(item).State = System.Data.Entity.EntityState.Modified;
                 return context.SaveChanges();
             }
+        }
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public int Album_Delete(Album item)
+        {
+            return Album_Delete(item.AlbumId);
         }
         public int Album_Delete(int albumid)
         {

@@ -191,6 +191,7 @@
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="SamplePages\FilterSearchCrud.aspx" />
+    <Content Include="SamplePages\ListViewCRUDODS.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -369,6 +370,13 @@
     </Compile>
     <Compile Include="SamplePages\FilterSearchCrud.aspx.designer.cs">
       <DependentUpon>FilterSearchCrud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\ListViewCRUDODS.aspx.cs">
+      <DependentUpon>ListViewCRUDODS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\ListViewCRUDODS.aspx.designer.cs">
+      <DependentUpon>ListViewCRUDODS.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

@@ -78,6 +78,7 @@
                             <asp:MenuItem Text="Contact" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="SamplePage" Value="Samples">
                                 <asp:MenuItem Text="CrudPage" NavigateUrl="~/SamplePages/FilterSearchCrud.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="ListCrudPage" NavigateUrl="~/SamplePages/ListViewCRUDODS.aspx"></asp:MenuItem>
                             </asp:MenuItem>
                         </Items>
                     </asp:Menu>
