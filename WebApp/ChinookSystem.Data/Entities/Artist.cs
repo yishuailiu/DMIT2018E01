@@ -1,44 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-#region Additional Namespaces
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-#endregion
-
 namespace ChinookSystem.Data.Entities
 {
-    [Table("Artists")]
-    public class Artist
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Artist
     {
-        [Key]
-        public int ArtistId { get; set; }
-        private string _Name;
-        public string Name {
-            get
-            {
-                return _Name;
-            }
-            set {
-                if (string.IsNullOrEmpty(value))
-                {
-                    _Name = null;
-                }
-                else
-                {
-                    _Name = value;
-                }
-            }
-        }
-        public virtual ICollection<Album> Albums
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Artist()
         {
-            get;
-            set;
+            Albums = new HashSet<Album>();
         }
 
+        public int ArtistId { get; set; }
+
+        [StringLength(120,ErrorMessage ="Artist Name cannot be longer than 120 characters")]
+        public string Name { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Album> Albums { get; set; }
     }
 }
