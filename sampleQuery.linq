@@ -36,4 +36,6 @@ select x
 
 Albums
 	.Where(x => x.ReleaseYear == 1970)
+	.OrderBy(x => x.Title)
 	.Select(x => x)
+	
