@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using ChinookSystem.DAL;
 using ChinookSystem.Data.Entities;
+using DMIT2018Common.UserControls;
 
 namespace ChinookSystem.BLL
 {
     [DataObject]
     public class AlbumController
     {
+        #region CLass variables
+        List<string> reasons = new List<string>();
+
+        #endregion
+
         #region query
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Album> Album_List()
@@ -48,12 +54,21 @@ namespace ChinookSystem.BLL
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int Album_Add(Album item)
         {
-            using(var context = new ChinookContext())
+            if (CheckReleaseYear(item))
             {
-                context.Albums.Add(item);
-                context.SaveChanges();
-                return item.AlbumId;
+                using (var context = new ChinookContext())
+                {
+                    context.Albums.Add(item);
+                    context.SaveChanges();
+                    return item.AlbumId;
+                }
             }
+            else
+            {
+                throw new BusinessRuleException("Validation Error", reasons);
+                
+            }
+            
         }
         [DataObjectMethod(DataObjectMethodType.Update, false)]
         public int Album_Update(Album item)
@@ -87,5 +102,29 @@ namespace ChinookSystem.BLL
         }
 
         #endregion 
+        //support methods
+        private bool CheckReleaseYear(Album item)
+        {
+            bool isValid = true;
+            int releaseyear;
+            if (string.IsNullOrEmpty(item.ReleaseYear.ToString()))
+            {
+                isValid = false;
+                reasons.Add("Reales Year is required");
+            }
+            else if (!int.TryParse(item.ReleaseYear.ToString(),out releaseyear))
+            {
+                isValid = false;
+                reasons.Add("Reales Year is not a number");
+            }
+            else if (releaseyear < 1950 || releaseyear > DateTime.Today.Year)
+            {
+                isValid = false;
+                reasons.Add(string.Format("Album release year of {0} invalid.year between 1950-2050", releaseyear));
+            }
+            return isValid;
+
+
+        }
     }
 }

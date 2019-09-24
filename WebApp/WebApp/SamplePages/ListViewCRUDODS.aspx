@@ -40,12 +40,12 @@
              ValidationExpression="^.{1,160}$" ></asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExReleaseLabelE" runat="server" ErrorMessage="Label is limited to 50 characteres" Display="None" ControlToValidate="ReleaseYearTextBoxE" ValidationGroup="EditGroup"
                 ValidationExpression="^.{0,50}$" ></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredReleaseYearE" runat="server" ErrorMessage="Year is required" ControlToValidate="ReleaseYearTextBoxE" Display="None" ValidationGroup="EditGroup"></asp:RequiredFieldValidator>
-            <asp:RangeValidator ID="RangeReleaseYearTextBoxE" runat="server" Type="Integer" ErrorMessage="Year range is 1950-2050" ControlToValidate="ReleaseYearTextBoxE" Display="None" MaximumValue='<%# DateTime.Today.Year %>' MinimumValue="2010" ValidationGroup="EditGroup"></asp:RangeValidator>
+            <%--<asp:RequiredFieldValidator ID="RequiredReleaseYearE" runat="server" ErrorMessage="Year is required" ControlToValidate="ReleaseYearTextBoxE" Display="None" ValidationGroup="EditGroup"></asp:RequiredFieldValidator>--%>
+            <%--<asp:RangeValidator ID="RangeReleaseYearTextBoxE" runat="server" Type="Integer" ErrorMessage="Year range is 1950-2050" ControlToValidate="ReleaseYearTextBoxE" Display="None" MaximumValue='<%# DateTime.Today.Year %>' MinimumValue="2010" ValidationGroup="EditGroup"></asp:RangeValidator>--%>
             <asp:RequiredFieldValidator ID="RequiredTitleTextBoxE" runat="server" ErrorMessage="Title is required" ControlToValidate="TitleTextBoxE" Display="None" ValidationGroup="EditGroup"></asp:RequiredFieldValidator>
             <tr style="background-color: #999999; color:red;">
                 <td>
-                    <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton"  />
+                    <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" ValidationGroup="EditGroup" />
                     <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
                 </td>
                 <td>
@@ -70,15 +70,17 @@
             </table>
         </EmptyDataTemplate>
         <InsertItemTemplate>
-            <asp:RangeValidator ID="RangeReleaseYearTextBoxI" runat="server" Type="Integer" ErrorMessage="Year range is 1950-2050" ControlToValidate="ReleaseYearTextBoxI" Display="None" MaximumValue='<%# DateTime.Today.Year %>' MinimumValue="2010" ValidationGroup="InsertGroup"></asp:RangeValidator>
+            <%--<asp:RangeValidator ID="RangeReleaseYearTextBoxI" runat="server" Type="Integer" ErrorMessage="Year range is 1951-2049" ControlToValidate="ReleaseYearTextBoxI" Display="None" MaximumValue='<%# DateTime.Today.Year %>' MinimumValue="1950" ValidationGroup="InsertGroup"></asp:RangeValidator>--%>
             <asp:RegularExpressionValidator ID="RegularExReleaseLabelI" runat="server" ErrorMessage="Label is limited to 50 characteres" Display="None" ControlToValidate="ReleaseYearTextBoxI" ValidationGroup="InsertGroup"
                 ValidationExpression="^.{0,50}$" ></asp:RegularExpressionValidator>
             <asp:RegularExpressionValidator ID="RegularExTitleTextBoxI" runat="server" ErrorMessage="Title is limited to 160 characteres" Display="None" ControlToValidate="TitleTextBoxI" ValidationGroup="InsertGroup"
                 ValidationExpression="^.{1,160}$" ></asp:RegularExpressionValidator>
+            <%--<asp:RequiredFieldValidator ID="RequiredFieldReleaseYearTextBoxI" runat="server" ErrorMessage="Year is required" ControlToValidate="ReleaseYearTextBoxI" Display="None" ValidationGroup="InsertGroup"></asp:RequiredFieldValidator>--%>
+
             <asp:RequiredFieldValidator ID="RequiredTitleTextBoxI" runat="server" ErrorMessage="Title is required" ControlToValidate="TitleTextBoxI" Display="None" ValidationGroup="InsertGroup"></asp:RequiredFieldValidator>
             <tr style="">
                 <td>
-                    <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton" />
+                    <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton" ValidationGroup="InsertGroup"/>
                     <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" />
                 </td>
                 <td>
