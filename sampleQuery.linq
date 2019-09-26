@@ -8,7 +8,6 @@
   </Connection>
 </Query>
 
-
 //sample of query syntax to dump the artist data 
 /*from x in Artists 
 where x.ArtistId==1
@@ -39,3 +38,11 @@ Albums
 	.OrderBy(x => x.Title)
 	.Select(x => x)
 	
+//create a list of albums release between 2007 and 2018
+//order by releaseyear then by title
+
+from x in Albums
+where x.ReleaseYear <= 2018 && x.ReleaseYear >=2007
+orderby x.ReleaseYear descending, x.Title
+select x
+
