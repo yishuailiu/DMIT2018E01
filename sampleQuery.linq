@@ -46,3 +46,24 @@ where x.ReleaseYear <= 2018 && x.ReleaseYear >=2007
 orderby x.ReleaseYear descending, x.Title
 select x
 
+//note the difference in method names using method syntax
+//a descending orderby is .OrderByDescending
+//secondery and beyong  ordering is .Thenby
+Albums
+   .Where (x => ((x.ReleaseYear <= 2018) && (x.ReleaseYear >= 2007)))
+   .OrderByDescending (x => x.ReleaseYear)
+   .ThenBy (x => x.Title)
+   
+ //Can navigational properties by used in queries
+ //create a list of albums by Deep Purple
+ //order by release year and title
+ from x in Albums
+ where x.Artist.Name.Contains("Deep Purple")
+ orderby x.ReleaseYear, x.Title
+ select new
+ {
+ 	Id = x.AlbumId ,
+	Title = x.Title ,
+	ArtistName = x.Artist.Name,
+	Year = x.ReleaseYear
+ }

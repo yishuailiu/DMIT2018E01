@@ -62,11 +62,11 @@
     <Compile Include="Entities\PlaylistTrack.cs" />
     <Compile Include="Entities\sysdiagram.cs" />
     <Compile Include="Entities\Track.cs" />
+    <Compile Include="POCOs\AlbumsOfArtist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\" />
-    <Folder Include="POCOs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,6 +9,7 @@ using System.ComponentModel;
 using ChinookSystem.DAL;
 using ChinookSystem.Data.Entities;
 using DMIT2018Common.UserControls;
+using ChinookSystem.Data.POCOs;
 
 namespace ChinookSystem.BLL
 {
@@ -48,6 +49,25 @@ namespace ChinookSystem.BLL
                 return results.ToList();
             }
         }
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<AlbumsOfArtist> Album_AlbumsOfArtist(string artistname)
+        {
+            using(var context = new ChinookContext())
+            {
+                var results =  from x in context.Albums
+                                            where x.Artist.Name.Contains(artistname)
+                                            orderby x.ReleaseYear, x.Title
+                                            select new AlbumsOfArtist
+                                            {
+                                                Title = x.Title,
+                                                ArtistName = x.Artist.Name,
+                                                Year = x.ReleaseYear,
+                                                Rlabel = x.ReleaseLabel
+                                            };
+                return results.ToList();
+            }
+        }
+
         #endregion
 
         #region Add,Update,Delete
