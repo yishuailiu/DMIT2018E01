@@ -9,11 +9,13 @@
 </Query>
 
 var tracksnew = from x in Albums
-						
+						where x.Tracks.Count()>0
 						select new 
 						{
 							Title = x.Title,
 							Artist = x.Artist.Name,
+							trackcount = x.Tracks.Count(),
+							playtime = x.Tracks.Sum(z => (z.Milliseconds/1000)/60) + "min" + x.Tracks.Sum(z => (z.Milliseconds/1000))%60 + "seconds",
 							tracks =  from y in x.Tracks										
 										select new {
 										TrackName = y.Name,
@@ -22,3 +24,4 @@ var tracksnew = from x in Albums
 							
 						};
 			tracksnew.Dump();
+

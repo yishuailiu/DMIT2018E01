@@ -18,7 +18,7 @@
         <AlternatingItemTemplate>
             <tr style="background-color: #FFFFFF; color: #284775;">
                 <td>
-                    <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" OnClientClick="return confirm('Are you sure you want to remove?')" />
+                    <asp:Button runat="server" CommandName="Delete" Text="Delete3" ID="DeleteButton" OnClientClick="return confirm('Are you sure you want to remove?')" />
                     <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                 </td>
                 <td>
@@ -100,7 +100,7 @@
         <ItemTemplate>
             <tr style="background-color: #E0FFFF; color: #333333;">
                 <td>
-                    <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton"  OnClientClick="return confirm('Are you sure you want to remove?')"/>
+                    <asp:Button runat="server" CommandName="Delete" Text="Delete1" ID="DeleteButton"  OnClientClick="return confirm('Are you sure you want to remove?')"/>
                     <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                 </td>
                 <td>
@@ -148,7 +148,7 @@
         <SelectedItemTemplate>
             <tr style="background-color: #E2DED6; font-weight: bold; color: #333333;">
                 <td>
-                    <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" OnClientClick="return confirm('Are you sure you want to remove?')" />
+                    <asp:Button runat="server" CommandName="Delete" Text="Delete2" ID="DeleteButton" OnClientClick="return confirm('Are you sure you want to remove?')" />
                     <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                 </td>
                 <td>

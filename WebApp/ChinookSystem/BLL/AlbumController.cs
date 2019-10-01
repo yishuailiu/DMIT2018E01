@@ -10,6 +10,7 @@ using ChinookSystem.DAL;
 using ChinookSystem.Data.Entities;
 using DMIT2018Common.UserControls;
 using ChinookSystem.Data.POCOs;
+using ChinookSystem.Data.DTOs;
 
 namespace ChinookSystem.BLL
 {
@@ -144,6 +145,11 @@ namespace ChinookSystem.BLL
             }
             return isValid;
 
+
+        }
+
+        public List<AlbumDTO> Album_AlbumAndTracks()
+        {
 
         }
     }
