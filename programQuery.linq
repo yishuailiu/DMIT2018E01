@@ -92,20 +92,7 @@ void Main()
 
 			
 	//create a list of all albums containing the album title and artist along with all the tracks of that album 
-	var tracksnew = from x in Albums
-						
-						select new 
-						{
-							Title = x.Title,
-							Artist = x.Artist.Name,
-							tracks =  from y in x.Tracks										
-										select new {
-										TrackName = y.Name,
-										Genre = y.Genre.Name,
-										Length = y.Milliseconds}
-							
-						};
-			tracksnew.Dump();
+	
 					 
 }
 
