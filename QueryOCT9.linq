@@ -18,17 +18,17 @@
 
 //sytax (query1).Union(query2).Union(queryn).Orderby(first sort).ThenBy(secondSord)
 
-var unionSample1 = from x in Albums
+var unionSample1 = (from x in Albums
 					where x.Tracks.Count() > 0
 					select new
 					{
 						title = x.Title,
 						trackcount = x.Tracks.Count(),
 						priceoftracks = x.Tracks.Sum(y => y.UnitPrice),
-						avglengthA = x.Tracks.Average(y => y.Milliseconds)/1000,
-						avglengthB = x.Tracks.Average(y => y.Milliseconds/1000)
-					};
-var unionSample2=	from x in Albums
+						avglengthA = x.Tracks.Average(y => y.Milliseconds)/1000.0,
+						avglengthB = x.Tracks.Average(y => y.Milliseconds/1000.0)
+					}).Union(				
+					from x in Albums
 					where x.Tracks.Count() == 0
 					select new
 					{
@@ -37,10 +37,11 @@ var unionSample2=	from x in Albums
 						priceoftracks = 0.00m,
 						avglengthA = 0.00,
 						avglengthB = 0.00
-					};
-var union =unionSample1.Union(unionSample2);
+					});
+				//unionSample2.Dump();		
+
 					
-union.Dump();
+		unionSample1.Dump();
 	//boolean filter .All() or .Any()
 	//, Any() method iterates throught the entire collection to see if any of the items match the specific condition
 	//return a true of false
@@ -142,30 +143,3 @@ union.Dump();
 							trackcount =xrside.Tracks.Count()
 						};
 						results.Dump();
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
