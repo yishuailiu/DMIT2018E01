@@ -7,12 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Jan2018DemoWebsite.SamplePages {
+namespace WebApp.SamplePages {
     
     
     public partial class ManagePlaylist {
         
-       
+        /// <summary>
+        /// MessageUserControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DMIT2018Common.UserControls.MessageUserControl MessageUserControl;
         
         /// <summary>
         /// Label1 control.

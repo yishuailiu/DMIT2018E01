@@ -148,9 +148,22 @@ namespace ChinookSystem.BLL
 
         }
 
-        public List<AlbumDTO> Album_AlbumAndTracks()
-        {
+        
 
-        }
+        //[dataobjectmethod(dataobjectmethodtype.select, false)]
+        //public list<selectionlist> list_albumtitle()
+        //{
+        //    using (var context = new chinookcontext())
+        //    {
+        //        var results = from x in context.albums
+        //                      orderby x.title
+        //                      select new selectionlist
+        //                      {
+        //                          idvaluefield = x.albumid,
+        //                          displaytext = x.title
+        //                      };
+        //        return results.tolist();
+        //    }
+        //}
     }
 }

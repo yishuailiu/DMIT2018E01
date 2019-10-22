@@ -7,11 +7,10 @@ using System.Web.UI.WebControls;
 
 #region Additonal Namespaces
 using ChinookSystem.BLL;
-using Chinook.Data.POCOs;
-using WebApp.Security;
+using ChinookSystem.Data.POCOs;
 #endregion
 
-namespace Jan2018DemoWebsite.SamplePages
+namespace WebApp.SamplePages
 {
     public partial class ManagePlaylist : System.Web.UI.Page
     {
@@ -27,29 +26,63 @@ namespace Jan2018DemoWebsite.SamplePages
 
         protected void ArtistFetch_Click(object sender, EventArgs e)
         {
-            
-                //code to go here
+            if (string.IsNullOrEmpty(ArtistName.Text))
+            {
+                MessageUserControl.ShowInfo("Missing Data", "Enter a partial artist name.");
+            }
+            else
+            {
+                MessageUserControl.TryRun(() =>
+                {
+                    SearchArg.Text = ArtistName.Text;
+                    TracksBy.Text = "Artist";
+                    TracksSelectionList.DataBind();//cause the ODS to execute
+                },"TrackSearch","Select from the following list to add to your playlist");
+            }
+               
 
           }
 
         protected void MediaTypeFetch_Click(object sender, EventArgs e)
         {
 
-                //code to go here
+            MessageUserControl.TryRun(() =>
+            {
+                SearchArg.Text = MediaTypeDDL.SelectedValue;
+                TracksBy.Text = "MediaType";
+                TracksSelectionList.DataBind();//cause the ODS to execute
+            }, "TrackSearch", "Select from the following list to add to your playlist");
 
         }
 
         protected void GenreFetch_Click(object sender, EventArgs e)
         {
 
-                //code to go here
+            MessageUserControl.TryRun(() =>
+            {
+                SearchArg.Text = GenreDDL.SelectedValue;
+                TracksBy.Text = "Genre";
+                TracksSelectionList.DataBind();//cause the ODS to execute
+            }, "TrackSearch", "Select from the following list to add to your playlist");
 
         }
 
         protected void AlbumFetch_Click(object sender, EventArgs e)
         {
 
-                //code to go here
+            if (string.IsNullOrEmpty(AlbumTitle.Text))
+            {
+                MessageUserControl.ShowInfo("Missing Data", "Enter a partial album name.");
+            }
+            else
+            {
+                MessageUserControl.TryRun(() =>
+                {
+                    SearchArg.Text = AlbumTitle.Text;
+                    TracksBy.Text = "Album";
+                    TracksSelectionList.DataBind();//cause the ODS to execute
+                }, "TrackSearch", "Select from the following list to add to your playlist");
+            }
 
         }
 

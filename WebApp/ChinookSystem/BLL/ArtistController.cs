@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ChinookSystem.DAL;
 using ChinookSystem.Data.Entities;
 using System.ComponentModel;
+using ChinookSystem.Data.POCOs;
 
 namespace ChinookSystem.BLL
 {
@@ -30,5 +31,20 @@ namespace ChinookSystem.BLL
                 return context.Artists.Find(artistid);
             }
         }
+        //[DataObjectMethod(DataObjectMethodType.Select, false)]
+        //public List<SelectionList> List_ArtistNames()
+        //{
+        //    using (var context = new ChinookContext())
+        //    {
+        //        var results = from x in context.Artists
+        //                      orderby x.Name
+        //                      select new SelectionList
+        //                      {
+        //                          IDValueField = x.ArtistId,
+        //                          DisplayText = x.Name
+        //                      };
+        //        return results.ToList();
+        //    }
+        //}
     }
 }
