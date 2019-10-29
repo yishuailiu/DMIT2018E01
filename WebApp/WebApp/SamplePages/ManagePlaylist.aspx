@@ -58,7 +58,7 @@
                         <asp:LinkButton ID="AddtoPlaylist" runat="server"
                              CssClass="btn" CommandArgument='<%# Eval("TrackID") %>'>
                             <span aria-hidden="true" class="glyphicon glyphicon-plus">&nbsp;</span>
-                        </asp:LinkButton>
+                        </asp:LinkButton><!--  -->
                         </td>
                     <td>
                         <asp:Label Text='<%# Eval("Name") %>' runat="server" ID="NameLabel" /></td>

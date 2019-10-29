@@ -138,7 +138,31 @@ namespace WebApp.SamplePages
         protected void TracksSelectionList_ItemCommand(object sender, 
             ListViewCommandEventArgs e)
         {
-            //code to go here
+            if (string.IsNullOrEmpty(PlaylistName.Text))
+            {
+                MessageUserControl.ShowInfo("Required data", "Play list name is required to add a track");
+            }
+            else
+            {
+                //collect the required data for the event
+                string playlistname = PlaylistName.Text;
+                //the username will come from the security
+                //so untill security is added, we will use HansenB
+                string username = "HandsenB";
+                //obtain the track id from the ListView
+                //the track id will be in the commandArg property of the ListViewCommandEventArgs e instance
+                //the commandarg in e is return as an object
+                int trackid = int.Parse(e.CommandArgument.ToString());
+
+                MessageUserControl.TryRun(() =>
+                {
+                    PlaylistTracksController sysmgr = new PlaylistTracksController();
+                    sysmgr.Add_TrackToPLaylist(playlistname, username, trackid);
+                    List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(playlistname, username);
+                    PlayList.DataSource = datainfo;
+                    PlayList.DataBind();
+                },"Adding a Track","Track has been added to the playlist");
+            }
             
         }
 
