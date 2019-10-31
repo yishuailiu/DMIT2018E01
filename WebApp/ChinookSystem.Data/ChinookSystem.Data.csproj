@@ -61,7 +61,6 @@
     <Compile Include="Entities\MediaType.cs" />
     <Compile Include="Entities\Playlist.cs" />
     <Compile Include="Entities\PlaylistTrack.cs" />
-    <Compile Include="Entities\sysdiagram.cs" />
     <Compile Include="Entities\Track.cs" />
     <Compile Include="POCOs\AlbumsOfArtist.cs" />
     <Compile Include="POCOs\SelectionList.cs" />

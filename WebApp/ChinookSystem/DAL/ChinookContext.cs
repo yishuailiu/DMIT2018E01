@@ -22,8 +22,7 @@ namespace ChinookSystem.DAL
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<MediaType> MediaTypes { get; set; }
         public virtual DbSet<Playlist> Playlists { get; set; }
-        public virtual DbSet<PlaylistTrack> PlaylistTracks { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<PlaylistTrack> PlaylistTracks { get; set; }        
         public virtual DbSet<Track> Tracks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
