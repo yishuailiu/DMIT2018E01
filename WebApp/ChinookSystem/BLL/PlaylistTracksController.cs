@@ -224,8 +224,51 @@ namespace ChinookSystem.BLL
         {
             using (var context = new ChinookContext())
             {
-               //code to go here
+                //code to go here
+                //play list exists?
 
+
+
+                
+                
+                
+                //commit
+                //no:message
+                var exists = (from x in context.Playlists
+                              where x.UserName.Equals(username,StringComparison.OrdinalIgnoreCase)&& x.Name.Equals(playlistname,StringComparison.OrdinalIgnoreCase)
+                              select x).FirstOrDefault();
+                if (exists == null)
+                {
+                    throw new Exception("Play list has been removed from the system");
+                }
+                //yes: create a list of playlistTracks that are to be kept
+                else
+                {
+                    var tracksKept = exists.PlaylistTracks
+                        .Where(tr => !trackstodelete.Any(ttd => tr.TrackId == ttd))// !to keep the id that is not match
+                        .Select(tr => tr).ToList();
+                    PlaylistTrack item = null;
+                    // stage the removal of tracks
+                    foreach (var dtrackid in trackstodelete)
+                    {
+                        item = exists.PlaylistTracks.Where(tr => tr.TrackId == dtrackid).FirstOrDefault();
+                        if (item != null)
+                        {
+                            exists.PlaylistTracks.Remove(item);
+                        }
+                    }
+
+                    int number = 1;
+                    // renumbering of kept tracks
+                    tracksKept.Sort((x, y) => x.TrackNumber.CompareTo(y.TrackNumber));
+                    foreach (var tKept in tracksKept)
+                    {
+                        tKept.TrackNumber = number;
+                        context.Entry(tKept).Property(y => y.TrackNumber).IsModified = true;
+                        number++;
+                    }
+                    context.SaveChanges();
+                }
 
             }
         }//eom
