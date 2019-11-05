@@ -1,0 +1,20 @@
+Purchasing
+
+Racing: Enter time, then system calculate the final place
+
+Receiving: When order camein ,the order came in as a packing slip. Bring up the order number, then start verifying the information: quantity of the items, 
+damgaed items, misshipped items. Partial order is possible. **
+
+Sales: Handling the details of the sale: payment, inventory, returns
+
+
+Basic Setup/ReverseEngineering/MessageUserControl
+DefaultPages(Team introduction, sub system, knowing problem)
+About Page(Security, logon to webmaster, autherization for different employees)
+Logo
+Page UI Design
+Security
+
+ReadMe: TeamName, github id, sub system
+
+Four Folder, one for each subsystem. Additional: EntityControl -- general Get/GetList
