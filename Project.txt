@@ -1,9 +1,18 @@
-Purchasing
+Version Control: at least 13 commits
+Basic Crud is pre-builded
+
+
+Purchasing: Purchasing unit and unit quantity, Order number is not created untill the order is placed. Vendor: current active order: null ordernumber and null date.
+Once the order placed, cant change ordernumber and date. Employee iD from security. VendorID is selected.
+Tranction processcing towards products. 
 
 Racing: Enter time, then system calculate the final place
+Calendar control is provided. 
 
 Receiving: When order camein ,the order came in as a packing slip. Bring up the order number, then start verifying the information: quantity of the items, 
 damgaed items, misshipped items. Partial order is possible. **
+Order is outstanding untill received. 
+In Race Results Control, enter time and penalties. 
 
 Sales: Handling the details of the sale: payment, inventory, returns
 
@@ -18,3 +27,10 @@ Security
 ReadMe: TeamName, github id, sub system
 
 Four Folder, one for each subsystem. Additional: EntityControl -- general Get/GetList
+
+Mockup:
+First line: image position
+Second line: BLL, logic
+Third line: data, poco,dto
+
+Class diagram
