@@ -18,6 +18,23 @@ namespace WebApp.SamplePages
         protected void Page_Load(object sender, EventArgs e)
         {
             TracksSelectionList.DataSource = null;
+            if (Request.IsAuthenticated)
+            {
+                if (User.IsInRole("Administrators")||User.IsInRole("Customers")||User.IsInRole("Customer Service"))
+                {
+
+                }
+                else
+                {
+                    //redirect to a page that states no authorization fot the request action
+                    Response.Redirect("~/Security/AccessDenied.aspx");
+                }
+            }
+            else
+            {
+                //redirect to login page
+                Response.Redirect("~/Account/Login.aspx");
+            }
         }
 
         protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
@@ -98,7 +115,7 @@ namespace WebApp.SamplePages
             {
                 string playlistname = PlaylistName.Text;
                 //until we do security, we will use a hard coded username
-                string username = "HansenB";
+                string username = User.Identity.Name;
 
                 //do a standard query lookup to your control
                 //use MessageUserControl for error handling
@@ -256,8 +273,8 @@ namespace WebApp.SamplePages
             //call BLL to move the track
             MessageUserControl.TryRun(() => {
                 PlaylistTracksController sysmgr = new PlaylistTracksController();
-                sysmgr.MoveTrack("HansenB", PlaylistName.Text, trackid, tracknumber, direction);
-                List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, "HansenB");
+                sysmgr.MoveTrack(User.Identity.Name, PlaylistName.Text, trackid, tracknumber, direction);
+                List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, User.Identity.Name);
                 PlayList.DataSource = datainfo;
                 PlayList.DataBind();
             }, "Success", "Track has been moved");
@@ -303,8 +320,8 @@ namespace WebApp.SamplePages
                         MessageUserControl.TryRun(() =>
                         {
                             PlaylistTracksController sysmgr = new PlaylistTracksController();
-                            sysmgr.DeleteTracks("HansenB",PlaylistName.Text,trackstodelete);
-                            List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, "HansenB");
+                            sysmgr.DeleteTracks(User.Identity.Name,PlaylistName.Text,trackstodelete);
+                            List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, User.Identity.Name);
                             PlayList.DataSource = datainfo;
                             PlayList.DataBind();
                         }, "Removing a Track", "Track has been removed from playlist");
@@ -328,7 +345,7 @@ namespace WebApp.SamplePages
                 string playlistname = PlaylistName.Text;
                 //the username will come from the security
                 //so untill security is added, we will use HansenB
-                string username = "HansenB";
+                string username = User.Identity.Name;
                 //obtain the track id from the ListView
                 //the track id will be in the commandArg property of the ListViewCommandEventArgs e instance
                 //the commandarg in e is return as an object

@@ -76,10 +76,12 @@
                             <asp:MenuItem Text="Home" NavigateUrl="~/Default.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="About" NavigateUrl="~/About.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Contact" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Security" NavigateUrl="~/Security/SecurityAdmin.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="SamplePage" Value="Samples">
                                 <asp:MenuItem Text="CrudPage" NavigateUrl="~/SamplePages/FilterSearchCrud.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="ListCrudPage" NavigateUrl="~/SamplePages/ListViewCRUDODS.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="LinQpad To WebApp" NavigateUrl="~/SamplePages/DisplayArtistAlbums.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="manage List" NavigateUrl="~/SamplePages/ManagePlaylist.aspx"></asp:MenuItem>
                             </asp:MenuItem>
                         </Items>
                     </asp:Menu>
