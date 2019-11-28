@@ -61,6 +61,8 @@ namespace WebApp.Security
             if (result.Succeeded)
                 userManager.AddToRole(userManager.FindByName("HansendB").Id,"Customers");
 
+            
+
             //seeding employees from the employee table
             //todo:
             //retrieve a list of Employee from the database

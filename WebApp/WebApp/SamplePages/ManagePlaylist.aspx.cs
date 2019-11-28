@@ -7,8 +7,10 @@ using System.Web.UI.WebControls;
 
 #region Additonal Namespaces
 using ChinookSystem.BLL;
+using ChinookSystem.Data.Entities;
 using ChinookSystem.Data.POCOs;
 using DMIT2018Common.UserControls;
+using WebApp.Security;
 #endregion
 
 namespace WebApp.SamplePages
@@ -20,9 +22,25 @@ namespace WebApp.SamplePages
             TracksSelectionList.DataSource = null;
             if (Request.IsAuthenticated)
             {
-                if (User.IsInRole("Administrators")||User.IsInRole("Customers")||User.IsInRole("Customer Service"))
+                if (User.IsInRole("Customers")||User.IsInRole("Customer Service"))
                 {
-
+                    var username = User.Identity.Name;
+                    SecurityController securitymgr = new SecurityController();
+                    int? customerid = securitymgr.GetCurrentUserCustomerId(username);
+                    if (customerid.HasValue)
+                    {
+                        MessageUserControl.TryRun(() =>
+                        {
+                            CustomerController sysmgr = new CustomerController();
+                            Customer info = sysmgr.Customer_Get(customerid.Value);
+                            CustomerName.Text = info.FullName;
+                        });
+                    }
+                    else
+                    {
+                        MessageUserControl.ShowInfo("Unregistered User", "This user is not a registered customer");
+                        CustomerName.Text = "Unregistered User";
+                    }
                 }
                 else
                 {
